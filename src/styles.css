@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --page-bg: #0c0c0c;
+  --page-fg: #d7e2ea;
+  --heading-from: #646973;
+  --heading-to: #bbccd7;
+  --hairline: rgba(255, 255, 255, 0.1);
+  --hairline-soft: rgba(255, 255, 255, 0.05);
+  --accent-1: #b600a8;
+  --accent-2: #7621b0;
+  --accent-3: #be4c00;
+}
+
+html.light {
+  --page-bg: #f4f1ec;
+  --page-fg: #0c0c0c;
+  --heading-from: #1a1a1a;
+  --heading-to: #555a63;
+  --hairline: rgba(12, 12, 12, 0.12);
+  --hairline-soft: rgba(12, 12, 12, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+  font-family: "Inter", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, var(--heading-from), var(--heading-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hairline {
+  border-color: var(--hairline);
+}
+
+.hairline-soft {
+  border-color: var(--hairline-soft);
+}
+
+.cta-gradient {
+  background: linear-gradient(123deg, #18011f 7%, var(--accent-1) 37%, var(--accent-2) 72%, var(--accent-3) 100%);
+  box-shadow: 0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721b1 inset;
+  outline: 2px solid #ffffff;
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

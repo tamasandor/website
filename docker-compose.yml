@@ -1,0 +1,22 @@
+services:
+  portfolio:
+    build: .
+    container_name: portfolio
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./certs:/etc/letsencrypt:ro
+      - ./certs/acme-challenge:/var/www/certbot:ro
+      - ./content/blog:/usr/share/nginx/blog-content:ro
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot_renew
+    restart: unless-stopped
+    volumes:
+      - ./certs:/etc/letsencrypt
+      - ./certs/acme-challenge:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while true; do certbot renew; sleep 12h & wait $${!}; done'"

@@ -6,14 +6,13 @@ export function AboutSection() {
       <div className="mx-auto max-w-4xl">
         <FadeIn>
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] opacity-50" style={{ color: "var(--page-fg)" }}>
-            About
+            About Me
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
           <p className="text-2xl leading-relaxed sm:text-3xl md:text-4xl" style={{ color: "var(--page-fg)" }}>
-            I'm a developer focused on shipping software that stays reliable long after
-            launch — clear architecture, sane dependencies, and interfaces people
-            actually enjoy using.
+            I build software and manage servers behind it.<br />
+            I like keeping things simple: clean code, automated setups, and infrastructure that stays online.
           </p>
         </FadeIn>
       </div>

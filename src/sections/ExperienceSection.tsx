@@ -1,9 +1,8 @@
 import { FadeIn } from "@/components/FadeIn";
 
 const experience = [
-  { role: "Senior Full Stack Developer", org: "Company Name", period: "2024 — Present" },
-  { role: "Full Stack Developer", org: "Company Name", period: "2022 — 2024" },
-  { role: "Frontend Developer", org: "Company Name", period: "2020 — 2022" },
+  { role: "BCX Hackathon (3rd Place)", org: "Bosch Connected Experience (BCX)", period: "2026" },
+  { role: "Software Engineering Student", org: "42 Wolfsburg", period: "2023 — 2026" },
 ];
 
 export function ExperienceSection() {

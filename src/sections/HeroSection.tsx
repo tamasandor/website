@@ -11,7 +11,7 @@ export function HeroSection() {
         className="mb-6 text-xs font-medium uppercase tracking-[0.3em]"
         style={{ color: "var(--page-fg)" }}
       >
-        Full Stack Developer
+        Software Engineer & System Administrator
       </motion.p>
 
       <motion.h1
@@ -33,8 +33,7 @@ export function HeroSection() {
         className="mx-auto mt-8 max-w-2xl text-base sm:text-lg md:text-xl"
         style={{ color: "var(--page-fg)" }}
       >
-        I design and build clean, reliable products — from the interface down to the
-        infrastructure that runs it.
+        I write scalable software, automate workflows, and manage the underlying infrastructure ensuring security, uptime, and high performance at every layer.
       </motion.p>
 
       <motion.a

@@ -1,10 +1,9 @@
-import { Github, Linkedin, MessageCircle } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 
 const socials = [
-  { label: "GitHub", value: "@yourhandle", href: "https://github.com/yourhandle", Icon: Github },
-  { label: "LinkedIn", value: "in/yourhandle", href: "https://linkedin.com/in/yourhandle", Icon: Linkedin },
-  { label: "WhatsApp", value: "+1 555 000 0000", href: "https://wa.me/15550000000", Icon: MessageCircle },
+  { label: "GitHub", value: "@tamasandor", href: "https://github.com/tamasandor", Icon: Github },
+  { label: "LinkedIn", value: "in/tamasandorlink", href: "https://linkedin.com/in/tamasandorlink", Icon: Linkedin },
 ];
 
 export function ContactSection() {
@@ -35,7 +34,7 @@ export function ContactSection() {
                 key={label}
                 href={href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm opacity-60 transition-opacity hover:opacity-100"
                 style={{ color: "var(--page-fg)" }}
               >

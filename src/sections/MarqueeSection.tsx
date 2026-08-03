@@ -1,4 +1,4 @@
-const items = ["React", "TypeScript", "Node.js", "PostgreSQL", "AWS", "Docker", "Python", "Next.js"];
+const items = ["Docker", "React", "Linux", "Node.js", "Ansible", "AWS", "Java Spring Boot", "PostgreSQL", "C/C++", "Next.js", "Python"];
 
 export function MarqueeSection() {
   const row = [...items, ...items];

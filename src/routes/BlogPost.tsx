@@ -4,8 +4,6 @@ import ReactMarkdown from "react-markdown";
 import { FadeIn } from "@/components/FadeIn";
 import { parseFrontmatter, type PostMeta } from "@/lib/frontmatter";
 
-// Only allow a safe filename charset — the slug ends up in a fetch URL,
-// so this blocks any path-traversal attempt (e.g. "../../something").
 const SAFE_SLUG = /^[a-zA-Z0-9_-]+$/;
 
 export function BlogPost() {

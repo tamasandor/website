@@ -5,7 +5,11 @@ import { parseFrontmatter, type PostMeta } from "@/lib/frontmatter";
 
 type Post = PostMeta & { slug: string };
 
-type DirEntry = { name: string; type: "file" | "directory" };
+// Hardcoded list of active post filenames (without .md)
+// Whenever you add a post to content/blog/ on the server, add its slug here!
+const KNOWN_SLUGS = [
+  "2026-08-02-hello-world",
+];
 
 export function Blog() {
   const [posts, setPosts] = useState<Post[] | null>(null);
@@ -16,20 +20,29 @@ export function Blog() {
 
     async function load() {
       try {
-        const res = await fetch("/content/blog/");
-        if (!res.ok) throw new Error(`Directory listing failed: ${res.status}`);
-        const entries: DirEntry[] = await res.json();
-        const mdFiles = entries.filter((e) => e.type === "file" && e.name.endsWith(".md"));
-
         const loaded = await Promise.all(
-          mdFiles.map(async (f) => {
-            const raw = await fetch(`/content/blog/${f.name}`).then((r) => r.text());
+          KNOWN_SLUGS.map(async (slug) => {
+            const res = await fetch(`/blog-content/${slug}.md`);
+            if (!res.ok) throw new Error(`Failed to load post: ${slug}`);
+            const raw = await res.text();
             const { meta } = parseFrontmatter(raw);
-            return { ...meta, slug: f.name.replace(/\.md$/, "") };
-          }),
+
+            return {
+              title: meta?.title || slug,
+              date: meta?.date || "",
+              excerpt: meta?.excerpt || "",
+              slug,
+            };
+          })
         );
 
-        loaded.sort((a, b) => (a.date < b.date ? 1 : -1));
+        // Sort posts descending by date safely (handles missing/undefined dates)
+        loaded.sort((a, b) => {
+          const dateA = a.date ?? "";
+          const dateB = b.date ?? "";
+          return dateB.localeCompare(dateA);
+        });
+
         if (!cancelled) setPosts(loaded);
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : "Failed to load posts");

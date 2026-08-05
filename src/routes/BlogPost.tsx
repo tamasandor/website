@@ -19,7 +19,7 @@ export function BlogPost() {
     }
     let cancelled = false;
 
-    fetch(`/blog-content/${slug}.md`)
+    fetch(`/content/blog/${slug}.md`)
       .then((res) => {
         if (!res.ok) throw new Error("Post not found");
         return res.text();

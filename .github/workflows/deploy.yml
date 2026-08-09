@@ -9,23 +9,23 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: Checkout code
-            uses: actions/checkout@v4
+            uses: actions/checkout@v7
 
           - name: Set up Docker Buildx
             uses: docker/setup-buildx-action@v4
 
-          - name: Buld and Start Portfolio Only
+          - name: Build and Start Portfolio Only
             run: docker compose up -d --build portfolio
 
           - name: Verify Portfolio is Running
             run: |
               sleep 5
-              STATES=$(docker compose ps --format '{{.State}}')
+              STATES=$(docker compose ps portfolio --format '{{.State}}')
               RUNNING_COUNT=$(echo "$STATES" | grep -c "^running$" || true)
               echo "Found $RUNNING_COUNT running container."
               if [ "$RUNNING_COUNT" -lt 1 ]; then
                 echo "--- Error Logs ---"
-                docker compose logs
+                docker compose logs portfolio
               exit 1
               fi
               echo "Container is running successfully!"
